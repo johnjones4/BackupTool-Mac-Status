@@ -11,6 +11,8 @@
 		AFDC9C6A1C39A6A700BB0DF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDC9C691C39A6A700BB0DF2 /* main.m */; };
 		AFDC9C6C1C39A6A700BB0DF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFDC9C6B1C39A6A700BB0DF2 /* Assets.xcassets */; };
 		AFDC9C6F1C39A6A800BB0DF2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFDC9C6D1C39A6A800BB0DF2 /* MainMenu.xib */; };
+		AFDC9C781C39ACDA00BB0DF2 /* BackupToolDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDC9C771C39ACDA00BB0DF2 /* BackupToolDatabase.m */; };
+		AFDC9C7A1C39B12A00BB0DF2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AFDC9C791C39B12A00BB0DF2 /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,9 @@
 		AFDC9C6B1C39A6A700BB0DF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFDC9C6E1C39A6A800BB0DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		AFDC9C701C39A6A800BB0DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFDC9C761C39ACDA00BB0DF2 /* BackupToolDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupToolDatabase.h; sourceTree = "<group>"; };
+		AFDC9C771C39ACDA00BB0DF2 /* BackupToolDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupToolDatabase.m; sourceTree = "<group>"; };
+		AFDC9C791C39B12A00BB0DF2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFDC9C7A1C39B12A00BB0DF2 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +43,7 @@
 		AFDC9C591C39A6A700BB0DF2 = {
 			isa = PBXGroup;
 			children = (
+				AFDC9C791C39B12A00BB0DF2 /* libsqlite3.tbd */,
 				AFDC9C641C39A6A700BB0DF2 /* BackupToolStatus */,
 				AFDC9C631C39A6A700BB0DF2 /* Products */,
 			);
@@ -55,6 +62,8 @@
 			children = (
 				AFDC9C651C39A6A700BB0DF2 /* AppDelegate.h */,
 				AFDC9C661C39A6A700BB0DF2 /* AppDelegate.m */,
+				AFDC9C761C39ACDA00BB0DF2 /* BackupToolDatabase.h */,
+				AFDC9C771C39ACDA00BB0DF2 /* BackupToolDatabase.m */,
 				AFDC9C6B1C39A6A700BB0DF2 /* Assets.xcassets */,
 				AFDC9C6D1C39A6A800BB0DF2 /* MainMenu.xib */,
 				AFDC9C701C39A6A800BB0DF2 /* Info.plist */,
@@ -140,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFDC9C781C39ACDA00BB0DF2 /* BackupToolDatabase.m in Sources */,
 				AFDC9C6A1C39A6A700BB0DF2 /* main.m in Sources */,
 				AFDC9C671C39A6A700BB0DF2 /* AppDelegate.m in Sources */,
 			);

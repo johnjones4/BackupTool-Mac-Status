@@ -10,6 +10,12 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property (weak) IBOutlet NSTextField *pathTextField;
+@property (weak) IBOutlet NSLayoutConstraint *browseButton;
+@property (weak) IBOutlet NSButton *applyButton;
+
+- (IBAction)browseButtonSelected:(id)sender;
+- (IBAction)applyButtonSelected:(id)sender;
 
 @end
 
