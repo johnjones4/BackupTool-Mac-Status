@@ -20,8 +20,7 @@
 - (id)initWithDatabasePath:(NSString*)pathToDB {
     if (self = [super init]) {
         if (sqlite3_open([pathToDB UTF8String], &_database) != SQLITE_OK) {
-            NSLog(@"Failed to open database!");
-            //TODO error
+            return nil;
         }
     }
     return self;

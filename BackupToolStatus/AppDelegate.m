@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "BackupToolDatabase.h"
 
+static NSString* const GeneralConfigInformativeText = @"Please specify a real path in Preferences leading to a valid JSON file containing a BackupTool configuration.";
+
 @interface AppDelegate () {
     NSStatusItem* _statusItem;
     BackupToolDatabase* _db;
@@ -63,8 +65,12 @@
         [self _setupConfig];
         self.window.isVisible = false;
     } else {
-        //TODO error
-        NSLog(@"Error!");
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:@"OK"];
+        alert.messageText = @"That path does not exist.";
+        alert.informativeText = GeneralConfigInformativeText;
+        alert.alertStyle = NSWarningAlertStyle;
+        [alert runModal];
     }
 }
 
@@ -84,17 +90,39 @@
         NSError* error;
         _config = [NSJSONSerialization JSONObjectWithData:configContents options:0 error:&error];
         if (error) {
-            //TODO error
-            NSLog(@"%@",error.localizedDescription);
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"OK"];
+            alert.messageText = error.localizedDescription;
+            alert.informativeText = GeneralConfigInformativeText;
+            alert.alertStyle = NSCriticalAlertStyle;
+            [alert runModal];
         } else if (_config) {
             NSString* dbPath = [_config valueForKey:@"backupManifestFile"];
             if (dbPath) {
                 _db = [[BackupToolDatabase alloc] initWithDatabasePath:dbPath];
+                if (!_db) {
+                    NSAlert *alert = [[NSAlert alloc] init];
+                    [alert addButtonWithTitle:@"OK"];
+                    alert.messageText = @"The backup manifast could not be loaded.";
+                    alert.informativeText = GeneralConfigInformativeText;
+                    alert.alertStyle = NSCriticalAlertStyle;
+                    [alert runModal];
+                }
             } else {
-                //TODO error
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert addButtonWithTitle:@"OK"];
+                alert.messageText = @"Your configuration file is missing a \"backupManifestFile\" property.";
+                alert.informativeText = GeneralConfigInformativeText;
+                alert.alertStyle = NSCriticalAlertStyle;
+                [alert runModal];
             }
         } else {
-            //TODO error
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"OK"];
+            alert.messageText = @"Your configuration file could not be read.";
+            alert.informativeText = GeneralConfigInformativeText;
+            alert.alertStyle = NSCriticalAlertStyle;
+            [alert runModal];
         }
     }
 }
