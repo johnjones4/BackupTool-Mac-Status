@@ -10,7 +10,6 @@
 
 @interface BackupToolDatabase : NSObject
 
-@property (nonatomic,readonly) float percentBackedUp;
 @property (nonatomic,readonly) NSInteger totalFiles;
 @property (nonatomic,readonly) NSInteger unBackedUpFiles;
 

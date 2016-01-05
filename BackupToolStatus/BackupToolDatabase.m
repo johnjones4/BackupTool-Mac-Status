@@ -56,9 +56,4 @@
     return count;
 }
 
-- (float)percentBackedUp {
-    NSInteger total = self.totalFiles;
-    return (float)(total - self.unBackedUpFiles) / (float)total;
-}
-
 @end

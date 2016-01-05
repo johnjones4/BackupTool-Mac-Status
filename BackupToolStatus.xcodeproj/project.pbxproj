@@ -291,6 +291,7 @@
 				AFDC9C751C39A6A800BB0DF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

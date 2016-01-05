@@ -15,6 +15,7 @@ static NSString* const GeneralConfigInformativeText = @"Please specify a real pa
     NSStatusItem* _statusItem;
     BackupToolDatabase* _db;
     NSDictionary* _config;
+    NSMenuItem* detailItem;
 }
 
 - (void)_setupConfig;
@@ -132,7 +133,11 @@ static NSString* const GeneralConfigInformativeText = @"Please specify a real pa
     _statusItem.button.image = [NSImage imageNamed:@"cloud"];
     _statusItem.button.imagePosition = NSImageLeft;
     
+    detailItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
+    detailItem.enabled = NO;
+    
     NSMenu* menu = [[NSMenu alloc] init];
+    [menu addItem:detailItem];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Preferences..." action:@selector(openPreferences:) keyEquivalent:@","]];
     [menu addItem:[NSMenuItem separatorItem]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(terminate:) keyEquivalent:@"q"]];
@@ -145,9 +150,14 @@ static NSString* const GeneralConfigInformativeText = @"Please specify a real pa
 }
 
 - (void)_pollingTimerFired:(NSTimer *)timer {
-    float percent = _db.percentBackedUp;
+    NSInteger total = _db.totalFiles;
+    NSInteger unBackedUpFiles = _db.unBackedUpFiles;
+    
+    float percent = (float)(total - unBackedUpFiles) / (float)total;
     NSString* percentString = [NSString stringWithFormat:@"%.0f%%",percent * 100.0f];
     _statusItem.button.title = percentString;
+    
+    detailItem.title = [NSString stringWithFormat:@"%ld of %ld Files",(total - unBackedUpFiles),(long)total];
 }
 
 @end
